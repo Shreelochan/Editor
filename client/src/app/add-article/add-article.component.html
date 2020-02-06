@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ml-auto mr-auto"href="#">DigiClass Editor</a>
+</nav>
+  
+<div class="container">
+<div class="row pt-5">
+    <div class="col-md-8">
+    <form [formGroup]="editorForm" (submit)="addArticle()" >
+        <div class="form-group">
+        <label for="editor"><h3>Editor</h3></label>
+        <quill-editor [style]="editorStyle" [(ngModel)]="body" formControlName="editor"></quill-editor>
+        </div>
+        <button class="btn btn-primary mt-5" type="submit">Submit</button>
+    </form>
+    </div>
+    <div class="col-md-4 bg-light p-4">
+    <h3>Output</h3>
+    <p class="my-5" [innerHTML]=editorContent></p>
+    </div>
+</div>
+</div>
+<div class='container'>
+    <div *ngFor="let article of articles">
+        <div class=col-md-3>
+            {{article.body}}
+            <button>Answer</button>
+        </div>
+    </div>
+</div>
+<link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
